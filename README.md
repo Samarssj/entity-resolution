@@ -241,6 +241,27 @@ This implementation intentionally favors explainability over opaque model comple
 
 Blocking can improve performance substantially, but every blocking strategy trades recall for speed. A record with a changed ZIP code and a strongly misspelled surname may not enter the same candidate block as its counterpart. For high-stakes workflows, compare multiple blocking strategies, inspect the review queue, and validate the resulting matches with domain-specific quality checks.
 
+## Streamlit deployment
+
+The repository includes a ready-to-deploy Streamlit interface in [`streamlit_app.py`](streamlit_app.py). It provides CSV upload controls, a preview of both inputs, configurable blocking and thresholds, summary metrics, merged output inspection, review-queue inspection, diagnostics, and downloadable CSV results.
+
+### Run locally
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+### Deploy with Streamlit Community Cloud
+
+1. Open [Streamlit Community Cloud](https://share.streamlit.io/) and sign in with GitHub.
+2. Select **New app** and choose the `Samarssj/entity-resolution` repository.
+3. Select the `main` branch.
+4. Set the main file path to `streamlit_app.py`.
+5. Select **Deploy**.
+
+No secrets or environment variables are required. The dependencies are declared in [`requirements.txt`](requirements.txt), and the visual theme is configured in [`.streamlit/config.toml`](.streamlit/config.toml).
+
 ## License
 
 This project is released under the MIT License.
